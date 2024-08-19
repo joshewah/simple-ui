@@ -1,0 +1,131 @@
+/* --------------- */
+/* Navigation Layout */
+/* --------------- */
+:root {
+  --nav-height: 3rem;
+}
+
+.navigation-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--nav-height);
+  padding: 0 1rem;
+}
+
+.theme-toggle,
+.search-input {
+  cursor: pointer;
+  color: slategray;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+}
+
+.search-input {
+  background-color: white;
+  border: 1.5px solid whitesmoke;
+  padding: 0.25rem 0.25rem 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-input:hover {
+  color: slategray;
+  background-color: whitesmoke;
+  border: 1.5px solid lightgray;
+}
+
+.theme-toggle {
+  border: none;
+  background-color: transparent;
+  padding: 0.25rem;
+}
+
+.theme-toggle:hover {
+  background-color: white;
+}
+
+.search-input--icon {
+  background-color: white;
+  padding: 0.25rem;
+  /* border: 1.5px solid lightgray; */
+  border-radius: 3px;
+  font-size: 0.625rem;
+}
+
+.navigation-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+  gap: 1rem;
+  font-size: 0.75rem;
+}
+
+.navigation-nav li :any-link {
+  color: black;
+  text-decoration: none;
+}
+
+.navigation-logo:any-link {
+  color: black;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+}
+
+.navigation-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* --------------- */
+/* Sidebar Layout */
+/* --------------- */
+
+.sidebar-layout {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  width: clamp(fit-content, 12rem, 400px);
+  height: calc(100vh - var(--nav-height));
+  padding: 1rem 2rem 0 1rem;
+
+  /* background-color: blue; */
+}
+
+.sidebar-nav-list {
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-nav-section {
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+.sidebar-nav ul {
+  font-size: 0.75rem;
+  font-weight: 500;
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-nav :any-link {
+  color: gray;
+  text-decoration: none;
+}
+
+a.active {
+  color: black !important;
+  text-decoration: underline !important;
+}
+
+.sidebar-nav li {
+  margin-bottom: 10px;
+}
