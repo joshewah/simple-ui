@@ -1,5 +1,5 @@
 import { Outlet, NavLink } from 'react-router-dom'
-import './../styles/layouts.css'
+import './../styles/globals.css'
 
 enum Tag {
   New = 'New',
@@ -48,17 +48,17 @@ const SidebarLayout = () => {
       routes: [
         {
           name: 'Accordion',
-          to: '/docs/components',
+          to: '/docs/components/accordion',
           tag: Tag.New,
         },
         {
           name: 'Card',
-          to: '/docs/components',
+          to: '/docs/components/card',
           tag: Tag.Featured,
         },
         {
           name: 'Button',
-          to: '/docs/components',
+          to: '/docs/components/button',
         },
       ],
     },
@@ -96,6 +96,7 @@ const SidebarLink = ({ route }: SidebarLinkProps) => {
     <li>
       <NavLink
         to={route.to}
+        reloadDocument
         end
         className={({ isActive }) => (isActive ? 'active' : '')}
       >

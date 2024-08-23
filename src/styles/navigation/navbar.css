@@ -1,16 +1,9 @@
-/* --------------- */
-/* Navigation Layout */
-/* --------------- */
-:root {
-  --nav-height: 3rem;
-}
-
 .navigation-layout {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: var(--nav-height);
-  padding: 0 1rem;
+  margin-bottom: 1rem;
 }
 
 .theme-toggle,
@@ -29,12 +22,12 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  border: 1.5px solid lightgray;
 }
 
 .search-input:hover {
   color: slategray;
   background-color: whitesmoke;
-  border: 1.5px solid lightgray;
 }
 
 .theme-toggle {
@@ -81,51 +74,4 @@
   display: flex;
   gap: 1rem;
   align-items: center;
-}
-
-/* --------------- */
-/* Sidebar Layout */
-/* --------------- */
-
-.sidebar-layout {
-  display: flex;
-  flex-direction: row;
-}
-
-.sidebar {
-  width: clamp(fit-content, 12rem, 400px);
-  height: calc(100vh - var(--nav-height));
-  padding: 1rem 2rem 0 1rem;
-
-  /* background-color: blue; */
-}
-
-.sidebar-nav-list {
-  margin-bottom: 1.5rem;
-}
-
-.sidebar-nav-section {
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.5px;
-}
-
-.sidebar-nav ul {
-  font-size: 0.75rem;
-  font-weight: 500;
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar-nav :any-link {
-  color: gray;
-  text-decoration: none;
-}
-
-a.active {
-  color: black !important;
-  text-decoration: underline !important;
-}
-
-.sidebar-nav li {
-  margin-bottom: 10px;
 }

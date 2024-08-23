@@ -22,19 +22,9 @@ const Introduction = () => {
       </section>
       <section>
         <h2>FAQ</h2>
-        <Accordion />
+        <p>TBC</p>
       </section>
     </main>
-  )
-}
-
-export const Accordion = () => {
-  return (
-    <>
-      <div>Item</div>
-      <div>Item</div>
-      <div>Item</div>
-    </>
   )
 }
 
