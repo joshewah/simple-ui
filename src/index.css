@@ -4,26 +4,87 @@
 @tailwind components;
 @tailwind utilities;
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@layer base {
+  :root {
+    --background-color: 255 255 255;
+    --background-card: 250 250 250;
+    --stroke-color: 228 228 230;
+    --text-color: 24 23 28;
+    --text-secondary-color: 65 64 70;
+    --text-alternative-color: 114 113 120;
+    --text-color--link: 63 63 70;
+  }
+
+  html.dark {
+    --background-color: 9 9 11;
+    --background-card: 24 23 28;
+    --stroke-color: 39 39 42;
+    --text-color: 255 255 255;
+    --text-secondary-color: 212 212 216;
+    --text-alternative-color: 113 113 121;
+    --text-color--link: 161 161 170;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: rgb(var(--background-color));
+    color: rgb(var(--text-color));
+    @apply min-h-screen;
+  }
+
+  p {
+    @apply text-base font-medium;
+    color: rgb(var(--text-secondary-color));
+  }
 }
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  @apply bg-background dark:bg-dark--background;
-  @apply text-text dark:text-dark--text;
+@layer components {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .navbar {
+    @apply flex items-center justify-between py-2 md:py-4;
+    color: rgb(var(--text-color));
+  }
+
+  .button {
+    @apply rounded-md bg-black py-2 pl-3 pr-1 text-base font-medium text-white;
+    color: rgb(212, 212, 216);
+    transition: color 300ms ease-in-out;
+  }
+
+  .button:hover {
+    color: rgb(255, 255, 255);
+  }
+
+  .button.light {
+    @apply px-3 py-2;
+    background-color: rgb(250, 250, 250);
+    color: rgb(65, 64, 70);
+  }
+
+  .button.light:hover {
+    color: rgb(0, 0, 0);
+  }
+
+  .logo {
+    @apply text-2xl font-bold tracking-tight;
+    color: rgb(var(--text-color));
+  }
+
+  .icon {
+    @apply h-4 w-4;
+    fill: rgb(var(--text-color));
+  }
 }
 
-p {
-  @apply text-text-secondary dark:text-dark--text-secondary;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+@layer components {
+  @media screen and (max-width: 564px) {
+    .container {
+      padding: 0 0.5rem;
+    }
+  }
 }
