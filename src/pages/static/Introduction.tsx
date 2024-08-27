@@ -1,4 +1,4 @@
-import './../styles/globals.css'
+
 
 const Introduction = () => {
   return (

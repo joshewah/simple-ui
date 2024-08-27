@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react'
-import '../styles/components/accordion.css'
 
 const Accordion = () => {
   return (

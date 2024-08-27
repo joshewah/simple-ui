@@ -1,8 +1,0 @@
-@import './sidebar.css';
-@import './navbar.css';
-@import './mobile-sidebar.css';
-@import './media-queries.css';
-
-:root {
-  --nav-height: 3rem;
-}

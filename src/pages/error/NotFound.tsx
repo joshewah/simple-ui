@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import '../styles/globals.css'
+
 const NotFound = () => {
   return (
     <main className='content'>
