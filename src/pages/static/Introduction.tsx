@@ -1,13 +1,11 @@
-
-
 const Introduction = () => {
   return (
-    <main className='content'>
-      <section>
-        <h1 className='page-heading'>Introduction</h1>
+    <div className="flex max-w-prose flex-1 flex-col sm:ml-8">
+      <section className="mb-8">
+        <h2>Introduction</h2>
         <p>
-          TO_BE_NAMED is a carefully designed and create components that you can
-          copy and paste into your apps.
+          My component library is a carefully designed and create components
+          that you can copy and paste into your apps.
         </p>
         <p>
           This is NOT a component library. It's a collection of re-usable
@@ -22,9 +20,9 @@ const Introduction = () => {
       </section>
       <section>
         <h2>FAQ</h2>
-        <p>TBC</p>
+        <p>Accordion to be added</p>
       </section>
-    </main>
+    </div>
   )
 }
 

@@ -13,12 +13,12 @@ const NavigationLayout = ({
 }: NavigationLayoutProps) => {
   return (
     <>
-      <nav className="navbar">
-        <Link to="/" className="logo hidden md:block">
+      <nav className="navbar border-b-stoke-color sticky top-0 z-10 mb-6 h-fit border-b bg-background py-2">
+        <Link to="/" className="logo hidden sm:block">
           Components
         </Link>
         {/* TODO: Add mobile menu w/state */}
-        <button className="md:hidden">
+        <button className="sm:hidden">
           <PanelLeftOpen size={18} strokeWidth={2.5} />
         </button>
         <div className="flex gap-3">

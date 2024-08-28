@@ -2,6 +2,7 @@ import CodeMirror from '@uiw/react-codemirror'
 import { createTheme } from '@uiw/codemirror-themes'
 import { javascript } from '@codemirror/lang-javascript'
 import { tags as t } from '@lezer/highlight'
+import { Copy } from 'lucide-react'
 
 const myTheme = createTheme({
   theme: 'dark',
@@ -15,8 +16,8 @@ const myTheme = createTheme({
     gutterBackground: '#18181b',
     gutterForeground: '#707070',
     gutterBorder: '#18181b',
-    gutterActiveForeground: '#000000',
-    lineHighlight: '#385475',
+    gutterActiveForeground: '#707070',
+    lineHighlight: '#18181b',
   },
   styles: [
     { tag: t.comment, color: '#787b80' },
@@ -30,17 +31,26 @@ const myTheme = createTheme({
 
 function CodePreview() {
   return (
-    <CodeMirror
-      value="console.log('hello world!');"
-      height="200px"
-      theme={myTheme}
-      extensions={[javascript({ jsx: true })]}
-      basicSetup={{
-        foldGutter: false,
-        highlightActiveLine: false,
-      }}
-      editable={false}
-    />
+    <div className="code-preview--wrapper">
+      <header className="code-preview--header">
+        <h6 className="text-xs tracking-wide">filename.tsx</h6>
+        <button>
+          <Copy size={12} strokeWidth={2.5} />
+        </button>
+      </header>
+      <CodeMirror
+        value="console.log('hello world!');
+console.log('hello world!');"
+        height="200px"
+        theme={myTheme}
+        extensions={[javascript({ jsx: true })]}
+        basicSetup={{
+          foldGutter: false,
+          highlightActiveLine: false,
+        }}
+        editable={false}
+      />
+    </div>
   )
 }
 export default CodePreview

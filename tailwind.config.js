@@ -5,13 +5,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: 'rgb(var(--background-color)',
-        'background-card': 'rgb(var(--background-card)',
-        'stoke-color': 'rgb(var(--stroke-color)',
-        'text-color': 'rgb(var(--text-color)',
-        'text-secondary-color': 'rgb(var(--text-secondary-color)',
-        'text-alternate-color': 'rgb(var(--text-alternate-color)',
-        'text-color--link': 'rgb(var(--text-color--link)',
+        background: 'rgb(var(--background-color) / <alpha-value>)',
+        'background-card': 'rgb(var(--background-card) / <alpha-value>)',
+        'stoke-color': 'rgb(var(--stroke-color) / <alpha-value>)',
+        'text-color': 'rgb(var(--text-color) / <alpha-value>)',
+        'text-secondary-color':
+          'rgb(var(--text-secondary-color) / <alpha-value>)',
+        'text-alternate-color':
+          'rgb(var(--text-alternative-color) / <alpha-value>)',
+        'text-color--link': 'rgb(var(--text-color--link) / <alpha-value>)',
       },
     },
   },

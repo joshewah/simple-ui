@@ -5,24 +5,34 @@
 @tailwind utilities;
 
 @layer base {
+  /* LIGHT MODE */
   :root {
-    --background-color: 255 255 255;
-    --background-card: 250 250 250;
-    --stroke-color: 228 228 230;
-    --text-color: 24 23 28;
-    --text-secondary-color: 65 64 70;
-    --text-alternative-color: 114 113 120;
-    --text-color--link: 63 63 70;
+    /* DYNAMIC COLORS */
+    --background-color: 255 255 255; /* #ffffff */
+    --background-card: 250 250 250; /* #fafafa */
+    --stroke-color: 228 228 230; /* #e4e4e6 */
+    --text-color: 24 23 28; /* #18181b */
+    --text-secondary-color: 65 64 70; /* #414046 */
+    --text-alternative-color: 114 113 120; /* #72707a */
+    --text-color--link: 161 161 161; /* #a1a1a1 */
+
+    /* STATIC COLORS */
+    --background-tag-new: 173 250 27; /* #addf1b */
+    --code-background-color: 24 24 27; /* #18181b */
+    --code-border-color: 39 39 42; /* #27272a */
+    --code-color--white: 255 255 255; /* #ffffff */
+    --code-color--light: 167 167 167 /* #a7a7a7 */;
   }
 
+  /* DARK MODE */
   html.dark {
-    --background-color: 9 9 11;
-    --background-card: 24 23 28;
-    --stroke-color: 39 39 42;
-    --text-color: 255 255 255;
-    --text-secondary-color: 212 212 216;
-    --text-alternative-color: 113 113 121;
-    --text-color--link: 161 161 170;
+    --background-color: 9 9 11; /* #09090b */
+    --background-card: 24 24 27; /* #18181b */
+    --stroke-color: 39 39 42; /* #27272a */
+    --text-color: 255 255 255; /* #ffffff */
+    --text-secondary-color: 212 212 216; /* #d4d4d8 */
+    --text-alternative-color: 113 113 121; /* #717179 */
+    --text-color--link: 161 161 170; /* #a1a1aa */
   }
 
   body {
@@ -32,9 +42,30 @@
     @apply min-h-screen;
   }
 
-  p {
-    @apply text-base font-medium;
+  h2 {
+    @apply mb-1 text-3xl font-bold tracking-tight;
+  }
+
+  h3 {
+    @apply mb-6 text-xl font-semibold tracking-tight;
+  }
+
+  h4 {
+    @apply mb-3 text-base font-medium tracking-tight;
     color: rgb(var(--text-secondary-color));
+  }
+
+  p {
+    @apply text-sm font-medium leading-relaxed;
+    color: rgb(var(--text-secondary-color));
+  }
+
+  p:not(:last-child) {
+    @apply mb-4;
+  }
+
+  pre {
+    font: inherit;
   }
 }
 
@@ -46,7 +77,7 @@
   }
 
   .navbar {
-    @apply flex items-center justify-between py-2 md:py-4;
+    @apply flex flex-shrink-0 items-center justify-between;
     color: rgb(var(--text-color));
   }
 
@@ -78,6 +109,43 @@
   .icon {
     @apply h-4 w-4;
     fill: rgb(var(--text-color));
+  }
+
+  .sidebar > ul > li:not(:last-child) {
+    @apply mb-1;
+  }
+
+  .sidebar-group-heading {
+    color: rgb(var(--text-color));
+    @apply text-sm font-medium;
+  }
+
+  .sidebar-link {
+    color: rgb(var(--text-color--link));
+    @apply relative text-sm font-medium transition-colors duration-200 ease-in-out;
+  }
+
+  .sidebar-link.tag-new::before {
+    content: 'New';
+    @apply absolute right-0 top-0 translate-x-10 rounded-md p-1 font-semibold leading-none text-black;
+    background-color: rgb(var(--background-tag-new));
+    font-size: 0.625rem;
+  }
+
+  .sidebar-link:hover {
+    color: rgb(var(--text-secondary-color));
+  }
+
+  .code-preview--wrapper {
+    @apply overflow-hidden rounded-md;
+    border: rgb(var(--code-border-color)) 1.5px solid;
+  }
+
+  .code-preview--header {
+    @apply flex items-center justify-between px-2 py-1;
+    border-bottom: rgb(var(--code-border-color)) 1.5px solid;
+    background-color: rgb(var(--code-background-color));
+    color: rgb(var(--code-color--light));
   }
 }
 
