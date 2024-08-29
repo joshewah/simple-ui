@@ -8,7 +8,7 @@ const TabButton = ({ title, handleClick, isActive }: TabButtonProps) => {
   return (
     <button
       onClick={handleClick}
-      className={`text-text-alternate-color hover:text-text-color border-b-[1.5px] border-transparent px-3 py-1 text-sm transition-colors duration-300 ${isActive ? 'text-text-color border-b-text-color' : ''}`}
+      className={`border-b-[1.5px] border-transparent px-3 py-1 text-xs font-medium text-text-alternate-color transition-colors duration-300 hover:text-text-color ${isActive ? 'border-b-text-color text-text-color' : ''}`}
     >
       {title}
     </button>

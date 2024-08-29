@@ -15,6 +15,9 @@ export default {
           'rgb(var(--text-alternative-color) / <alpha-value>)',
         'text-color--link': 'rgb(var(--text-color--link) / <alpha-value>)',
       },
+      fontSize: {
+        '2xs': '0.625rem',
+      },
     },
   },
   plugins: [],

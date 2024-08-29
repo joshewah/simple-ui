@@ -2,13 +2,13 @@ import { Outlet, NavLink } from 'react-router-dom'
 
 const SidebarLayout = () => {
   return (
-    <div className="flex">
-      <aside className="hidden pb-6 pr-6 sm:sticky sm:top-16 sm:block sm:h-screen sm:min-w-fit">
+    <div className="flex overflow-auto">
+      <aside className="hidden pb-6 pr-6 sm:block sm:min-w-fit">
         <nav className="sidebar">
           <ul className="mb-4">
             <li className="sidebar-group-heading">Getting Started</li>
             <li>
-              <NavLink to="/docs/introduction" className="sidebar-link">
+              <NavLink to="/" className="sidebar-link">
                 Introduction
               </NavLink>
             </li>
@@ -21,8 +21,11 @@ const SidebarLayout = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="./components/card" className="sidebar-link tag-new">
-                Card
+              <NavLink
+                to="./components/button"
+                className="sidebar-link tag-new"
+              >
+                Button
               </NavLink>
             </li>
           </ul>

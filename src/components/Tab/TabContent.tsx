@@ -6,9 +6,8 @@ type TabContentProps = {
 }
 
 const TabContent = ({ children, maxHeight }: TabContentProps) => {
-  console.log(maxHeight)
   maxHeight = maxHeight || 0
-  const tabContentStyles = `${maxHeight ? `max-h-${maxHeight}px` : ''}`
+  const tabContentStyles = `${maxHeight ? `max-h-${maxHeight}px` : ''} relative`
 
   return <div className={tabContentStyles}>{children}</div>
 }

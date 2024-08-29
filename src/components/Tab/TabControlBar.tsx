@@ -6,7 +6,7 @@ type TabControlBarProps = {
 
 const TabControlBar = ({ children }: TabControlBarProps) => {
   return (
-    <div className="border-b-stoke-color mb-2 flex border-b-[1.5px]">
+    <div className="mb-2 flex border-b-[1.5px] border-b-stoke-color">
       {children}
     </div>
   )
