@@ -24,8 +24,8 @@ type ComponentDetailsProps = {
   }>
 }
 
-export default ButtonComponentDetailsPreview = () => {
-  const temp: ComponentDetailsProps = {
+const ButtonComponentDetailsPreview = (): ComponentDetailsProps => {
+  return {
     overview: {
       title: 'Button',
       description:
@@ -44,11 +44,7 @@ export default ButtonComponentDetailsPreview = () => {
         previews: {
           component: (
             <ComponentPreview
-              preview={
-                <Button variant="secondary" style="snug">
-                  Button
-                </Button>
-              }
+              preview={<Button variant="secondary">Button</Button>}
             />
           ),
           code: <CodePreview />,
@@ -87,11 +83,10 @@ export default ButtonComponentDetailsPreview = () => {
           code: <CodePreview />,
         },
       },
-      // Add more examples as needed
     ],
     //   Should be read from the component file
     code: `console.log("Hello World")'`,
-    props = [
+    props: [
       {
         name: 'className',
         type: 'string',
@@ -107,4 +102,5 @@ export default ButtonComponentDetailsPreview = () => {
     ],
   }
 }
-// THIS IS ALL THE INFORMATION FOR THE COMPONENT DETAIL PAGE FOR THE BUTTON
+
+export default ButtonComponentDetailsPreview

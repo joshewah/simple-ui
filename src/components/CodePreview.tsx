@@ -29,7 +29,13 @@ const myTheme = createTheme({
   ],
 })
 
-function CodePreview() {
+type CodePreviewProps = {
+  code: string
+}
+
+function CodePreview({
+  code = "console.log('hello world!')",
+}: CodePreviewProps) {
   return (
     <div className="code-preview--wrapper">
       <header className="code-preview--header">
@@ -39,8 +45,7 @@ function CodePreview() {
         </button>
       </header>
       <CodeMirror
-        value="console.log('hello world!');
-console.log('hello world!');"
+        value={code}
         height="200px"
         theme={myTheme}
         extensions={[javascript({ jsx: true })]}
