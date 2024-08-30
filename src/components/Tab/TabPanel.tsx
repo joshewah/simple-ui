@@ -10,7 +10,7 @@ const TabPanel = ({ component, background }: TabPanelProps) => {
     <div
       className={
         background
-          ? 'bg-background-card border-stoke-color grid min-h-56 place-items-center rounded-md border-[1.5px]'
+          ? 'relative grid min-h-56 place-items-center rounded-md border-[1.5px] border-stoke-color bg-background-card'
           : ''
       }
     >

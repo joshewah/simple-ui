@@ -24,6 +24,10 @@
     --code-color--light: 167 167 167 /* #a7a7a7 */;
   }
 
+  :root:has(.no-doc-scroll) {
+    overflow: hidden;
+  }
+
   /* DARK MODE */
   html.dark {
     --background-color: 9 9 11; /* #09090b */
@@ -111,25 +115,20 @@
     fill: rgb(var(--text-color));
   }
 
-  .sidebar > ul > li:not(:last-child) {
-    @apply mb-1;
-  }
-
   .sidebar-group-heading {
     color: rgb(var(--text-color));
-    @apply text-sm font-medium;
+    @apply text-sm font-bold tracking-tight;
   }
 
   .sidebar-link {
     color: rgb(var(--text-color--link));
-    @apply relative text-sm font-medium transition-colors duration-200 ease-in-out;
+    @apply relative text-xs font-medium transition-colors duration-200 ease-in-out;
   }
 
   .sidebar-link.tag-new::before {
     content: 'New';
-    @apply absolute right-0 top-0 translate-x-10 rounded-md p-1 font-semibold leading-none text-black;
-    background-color: rgb(var(--background-tag-new));
-    font-size: 0.625rem;
+    @apply text-2xs absolute right-0 top-0 translate-x-9 rounded-md bg-lime-300 px-1 py-[2px] font-semibold leading-none text-black;
+    /* font-size: 0.625rem; */
   }
 
   .sidebar-link:hover {
@@ -137,7 +136,7 @@
   }
 
   .code-preview--wrapper {
-    @apply rounded-md sm:max-w-md md:max-w-xl;
+    @apply rounded-md;
     overflow-x: hidden;
     border: rgb(var(--code-border-color)) 1.5px solid;
   }
@@ -149,9 +148,70 @@
     color: rgb(var(--code-color--light));
   }
 
-  .cm-scroller {
-    /* @apply max-w-96; */
+  /* .cm-scroller {
     overflow-x: scroll;
+  } */
+
+  .animateIn {
+    animation: animateIn 500ms ease-in-out;
+    animation-fill-mode: forwards;
+    @apply transition-all;
+  }
+
+  @keyframes animateIn {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  .animateOut {
+    animation: animateOut 400ms ease-in-out;
+    animation-fill-mode: forwards;
+    @apply transition-all;
+  }
+
+  @keyframes animateOut {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  .overlay {
+    @apply absolute left-0 top-0 z-[5] h-screen w-screen bg-black;
+  }
+
+  .fadeInOverlay {
+    animation: fadeInOverlay both 500ms ease-in-out;
+  }
+  .fadeOutOverlay {
+    animation: fadeOutOverlay both 500ms ease-in-out;
+  }
+
+  @keyframes fadeInOverlay {
+    from {
+      opacity: 0;
+      filter: blur(10px);
+    }
+    to {
+      opacity: 0.6;
+      transform: scale(1);
+      filter: blur(0);
+    }
+  }
+  @keyframes fadeOutOverlay {
+    from {
+      opacity: 0.6;
+      transform: scale(1);
+      filter: blur(0);
+    }
+    to {
+      opacity: 0;
+      filter: blur(10px);
+    }
   }
 }
 

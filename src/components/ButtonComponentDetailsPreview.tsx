@@ -18,9 +18,9 @@ const createExample = (
   variant?: Variants,
   style?: Styles,
 ): Example => {
-  const getOptions = <T extends string>(...args: T[]): T[] => args; 
+  const getOptions = <T extends string>(...args: T[]): T[] => args
   const options = getOptions<Styles>('base', 'snug')
-  
+
   const codeString = `<Button${variant ? ` variant="${variant}"` : ''}${style ? ` style="${style}"` : ''}>Button</Button>`
   const previewComponent = (
     <Button variant={variant} style={style}>
@@ -31,7 +31,9 @@ const createExample = (
   return {
     name,
     previews: {
-      component: <ComponentPreview preview={previewComponent} options={options} />,
+      component: (
+        <ComponentPreview preview={previewComponent} options={options} />
+      ),
       code: <CodePreview code={codeString} />,
     },
   }
@@ -41,7 +43,7 @@ const createExample = (
 const examples: Example[] = [
   createExample('Primary'),
   createExample('Secondary', 'secondary'),
-  createExample('Outline', 'outline', 'snug'),
+  createExample('Outline', 'outline'),
   createExample('Ghost', 'ghost'),
   createExample('Accent', 'accent'),
 ]

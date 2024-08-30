@@ -1,7 +1,8 @@
-import { Component } from 'lucide-react'
+import { ChevronsUp } from 'lucide-react'
 import CodePreview from '../components/CodePreview'
 import ComponentPreview from '../components/ComponentPreview'
 import Tab from '../components/Tab/Tab'
+import Button from '../components/Button'
 
 export type ComponentDetails = {
   overview: {
@@ -32,13 +33,13 @@ type ComponentDetailsProps = {
 const ComponentDetails = ({ data }: ComponentDetailsProps) => {
   const { overview, examples, code, props } = data
   return (
-    <div className="flex max-w-prose justify-between">
-      <div className="flex max-w-prose flex-1 flex-col overflow-x-scroll sm:ml-8">
+    <div className="lg:flex lg:w-full lg:justify-between">
+      <div className="flex max-w-[calc(100dvw-2rem)] flex-1 flex-col overflow-x-scroll sm:ml-8 sm:max-w-md md:max-w-xl lg:max-w-screen-sm">
         {/* <ComponentOverview id='overview' overview={overview} /> */}
         {/* <ComponentExamples id='examples' examples={examples} /> */}
         {/* <ComponentCode id='code' code={code} /> */}
         {/* <ComponentPropsTable id='props' props={props} /> */}
-        <section id="overview" className="mb-8">
+        <section id="overview" className="mb-8 max-w-prose">
           <h2>{overview.title}</h2>
           <p>{overview.description}</p>
         </section>
@@ -89,10 +90,21 @@ const ComponentDetails = ({ data }: ComponentDetailsProps) => {
         </section>
 
         <section className="mb-16 flex justify-end">
-          <a href="#overview">Back to top</a>
+          <a href="#overview">
+            <Button>
+              <div className="flex items-center gap-1">
+                <span>Back to top</span>
+                <ChevronsUp
+                  size={14}
+                  strokeWidth={2.5}
+                  className="inline-block"
+                />
+              </div>
+            </Button>
+          </a>
         </section>
       </div>
-      <aside className="hidden lg:sticky lg:right-0 lg:top-0 lg:block lg:h-full lg:min-w-fit lg:max-w-fit">
+      <aside className="hidden lg:block lg:h-full lg:min-w-fit lg:max-w-fit">
         <nav>
           <ul className="flex flex-col gap-2">
             <li className="sidebar-group-heading">Page Shortcuts</li>

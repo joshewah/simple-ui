@@ -2,7 +2,7 @@ import TabControlBar from './TabControlBar'
 import TabButton from './TabButton'
 import TabContent from './TabContent'
 import TabPanel from './TabPanel'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 type TabProps = {
   componentPreview: React.ReactNode
@@ -11,10 +11,6 @@ type TabProps = {
 
 const Tab = ({ componentPreview, codePreview }: TabProps) => {
   const [activeTab, setActiveTab] = useState<'preview' | 'code'>('preview')
-
-  useEffect(() => {
-    setActiveTab('preview')
-  }, [])
 
   return (
     <pre className="mb-6">
@@ -30,7 +26,7 @@ const Tab = ({ componentPreview, codePreview }: TabProps) => {
           isActive={activeTab === 'code'}
         />
       </TabControlBar>
-      <TabContent maxHeight={100}>
+      <TabContent>
         {activeTab === 'preview' ? (
           <TabPanel component={componentPreview} background={true} />
         ) : (

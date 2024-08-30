@@ -11,7 +11,7 @@ const Landing = () => {
         <h1 className="mb-2 text-5xl font-bold tracking-tight sm:text-6xl md:mb-4 md:max-w-[18ch] md:text-center">
           Reusable, Customizable & Animated Components
         </h1>
-        <p className="text-text-secondary-color mb-4 text-xl font-medium md:mb-8 md:max-w-[50ch] md:text-center md:text-2xl">
+        <p className="mb-4 text-xl font-medium text-text-secondary-color md:mb-8 md:max-w-[50ch] md:text-center md:text-2xl">
           Beautifully designed. Open source. React components. That can be
           copied and pasted right into your codebase.
         </p>
@@ -27,9 +27,20 @@ const Landing = () => {
         </div>
       </section>
       <section className="flex max-h-full flex-col items-center justify-center gap-12 py-8 md:items-center md:py-16">
-        <ComponentPreview preview={<Button>Button</Button>} />
-        <ComponentPreview preview={<Button>Button</Button>} />
-        <Link to="/docs/components">See all components</Link>
+        <div className="grid aspect-video place-items-center rounded-md bg-background-card p-24">
+          <ComponentPreview preview={<Button>Button</Button>} />
+        </div>
+        <div className="grid aspect-video place-items-center rounded-md bg-background-card p-24">
+          <ComponentPreview preview={<Button>Button</Button>} />
+        </div>
+        <Link to="/docs/components">
+          <Button>
+            <div className="flex items-center gap-1">
+              See all components
+              <ChevronRight size={16} strokeWidth={2} />
+            </div>
+          </Button>
+        </Link>
       </section>
       {/* Maybe design a section on what pacakges are used*/}
       {/* TODO: Add example components */}

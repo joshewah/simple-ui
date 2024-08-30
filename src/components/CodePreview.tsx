@@ -2,7 +2,8 @@ import CodeMirror from '@uiw/react-codemirror'
 import { createTheme } from '@uiw/codemirror-themes'
 import { javascript } from '@codemirror/lang-javascript'
 import { tags as t } from '@lezer/highlight'
-import { Copy } from 'lucide-react'
+import { Check, Copy } from 'lucide-react'
+import { useState } from 'react'
 
 const myTheme = createTheme({
   theme: 'dark',
@@ -21,8 +22,8 @@ const myTheme = createTheme({
   },
   styles: [
     { tag: t.comment, color: '#787b80' },
-    { tag: t.definition(t.typeName), color: '#194a7b' },
-    { tag: t.typeName, color: '#194a7b' },
+    { tag: t.definition(t.typeName), color: '#707070' },
+    { tag: t.typeName, color: '#ffffff' },
     { tag: t.tagName, color: '#ffffff' },
     { tag: t.variableName, color: '#ffffff' },
     { tag: t.propertyName, color: '#ffffff' },
@@ -37,20 +38,32 @@ type CodePreviewProps = {
 function CodePreview({
   code = "console.log('hello world!')",
 }: CodePreviewProps) {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(code)
+    setCopied(true)
+    setTimeout(() => {
+      setCopied(false)
+    }, 2000)
+  }
+
   return (
     <div className="code-preview--wrapper">
       <header className="code-preview--header">
         <h6 className="text-xs tracking-wide">filename.tsx</h6>
-        <button>
-          <Copy size={12} strokeWidth={2.5} />
+        <button onClick={handleCopy}>
+          {!copied ? (
+            <Copy size={12} strokeWidth={2.5} />
+          ) : (
+            <Check size={16} strokeWidth={2.5} color="lime" />
+          )}
         </button>
       </header>
       <CodeMirror
         value={code}
         height="auto"
-        maxHeight="250px"
-        minHeight="100px"
-        className="text-xs md:text-sm"
+        className="text-xs md:text-xs"
         theme={myTheme}
         extensions={[javascript({ jsx: true })]}
         basicSetup={{
