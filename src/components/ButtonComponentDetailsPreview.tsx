@@ -1,106 +1,70 @@
-import Button from './Button'
+import Button, { Variants, Styles } from './Button'
+import ComponentCode from './Button?raw'
 import ComponentPreview from './ComponentPreview'
 import CodePreview from './CodePreview'
+import { ComponentDetails } from '../pages/ComponentDetails'
 
-type ComponentDetailsProps = {
-  overview: {
-    title: string
-    description: string
-    usage?: string
+interface Example {
+  name: string
+  previews: {
+    component: React.ReactNode
+    code: React.ReactNode
   }
-  examples: Array<{
-    name: string
-    previews: {
-      component: React.ReactNode
-      code: React.ReactNode
-    }
-  }>
-  code: string
-  props: Array<{
-    name: string
-    type: string
-    default: string
-    description: string
-  }>
 }
 
-const ButtonComponentDetailsPreview = (): ComponentDetailsProps => {
+// Helper function to generate examples
+const createExample = (
+  name: string,
+  variant?: Variants,
+  style?: Styles,
+): Example => {
+  const codeString = `<Button${variant ? ` variant="${variant}"` : ''}${style ? ` style="${style}"` : ''}>Button</Button>`
+  const previewComponent = (
+    <Button variant={variant} style={style}>
+      Button
+    </Button>
+  )
+
   return {
-    overview: {
-      title: 'Button',
-      description:
-        'Lorem ipsum dolor sit amet. Non fugiat porro et aliquid autem aut officiis debitis qui minus repudiandae.',
+    name,
+    previews: {
+      component: <ComponentPreview preview={previewComponent} />,
+      code: <CodePreview code={codeString} />,
     },
-    examples: [
-      {
-        name: 'Primary',
-        previews: {
-          component: <ComponentPreview preview={<Button>Button</Button>} />,
-          code: <CodePreview />,
-        },
-      },
-      {
-        name: 'Secondary',
-        previews: {
-          component: (
-            <ComponentPreview
-              preview={<Button variant="secondary">Button</Button>}
-            />
-          ),
-          code: <CodePreview />,
-        },
-      },
-      {
-        name: 'Outline',
-        previews: {
-          component: (
-            <ComponentPreview
-              preview={<Button variant="outline">Button</Button>}
-            />
-          ),
-          code: <CodePreview />,
-        },
-      },
-      {
-        name: 'Ghost',
-        previews: {
-          component: (
-            <ComponentPreview
-              preview={<Button variant="ghost">Button</Button>}
-            />
-          ),
-          code: <CodePreview />,
-        },
-      },
-      {
-        name: 'Accent',
-        previews: {
-          component: (
-            <ComponentPreview
-              preview={<Button variant="accent">Button</Button>}
-            />
-          ),
-          code: <CodePreview />,
-        },
-      },
-    ],
-    //   Should be read from the component file
-    code: `console.log("Hello World")'`,
-    props: [
-      {
-        name: 'className',
-        type: 'string',
-        default: '-',
-        description: 'Additional class name',
-      },
-      {
-        name: 'style',
-        type: 'CSSProperties',
-        default: '-',
-        description: 'Inline styles for the component',
-      },
-    ],
   }
 }
 
-export default ButtonComponentDetailsPreview
+// Generate the examples array
+const examples: Example[] = [
+  createExample('Primary'),
+  createExample('Secondary', 'secondary'),
+  createExample('Outline', 'outline', 'snug'),
+  createExample('Ghost', 'ghost'),
+  createExample('Accent', 'accent'),
+]
+
+const ButtonDetails: ComponentDetails = {
+  overview: {
+    title: 'Button',
+    description:
+      'A clean and simple button component with different variants and styles which you can further customize yourself to your liking.',
+  },
+  examples: examples,
+  code: ComponentCode,
+  props: [
+    {
+      name: 'variant',
+      type: 'string',
+      default: 'primary',
+      description: 'The variant of the button.',
+    },
+    {
+      name: 'style',
+      type: 'string',
+      default: 'base',
+      description: 'The style of the button, either base or snug.',
+    },
+  ],
+}
+
+export default ButtonDetails

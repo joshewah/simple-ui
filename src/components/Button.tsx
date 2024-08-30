@@ -1,5 +1,5 @@
-type Variants = 'primary' | 'secondary' | 'outline' | 'ghost' | 'accent'
-type Styles = 'base' | 'snug'
+export type Variants = 'primary' | 'secondary' | 'outline' | 'ghost' | 'accent'
+export type Styles = 'base' | 'snug'
 
 enum styles {
   base = 'transition-colors duration-300 px-3 py-2 text-xs font-medium rounded-md',
@@ -28,11 +28,7 @@ const Button = ({
   return (
     <button className={`${variants[variant]} ${styles[style]}`}>
       {children}
-      <span className=""></span>
     </button>
-    // <button className="">
-    //   {children}
-    // </button>
   )
 }
 

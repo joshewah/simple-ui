@@ -30,6 +30,7 @@ const myTheme = createTheme({
 })
 
 type CodePreviewProps = {
+  filename?: string
   code: string
 }
 
@@ -46,7 +47,10 @@ function CodePreview({
       </header>
       <CodeMirror
         value={code}
-        height="200px"
+        height="auto"
+        maxHeight="250px"
+        minHeight="100px"
+        className="text-xs md:text-sm"
         theme={myTheme}
         extensions={[javascript({ jsx: true })]}
         basicSetup={{

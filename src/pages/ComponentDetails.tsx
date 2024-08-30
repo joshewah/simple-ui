@@ -3,7 +3,7 @@ import CodePreview from '../components/CodePreview'
 import ComponentPreview from '../components/ComponentPreview'
 import Tab from '../components/Tab/Tab'
 
-type ComponentDetailsProps = {
+export type ComponentDetails = {
   overview: {
     title: string
     description: string
@@ -25,15 +25,15 @@ type ComponentDetailsProps = {
   }>
 }
 
-const ComponentDetails = ({
-  overview,
-  examples,
-  code,
-  props,
-}: ComponentDetailsProps) => {
+type ComponentDetailsProps = {
+  data: ComponentDetails
+}
+
+const ComponentDetails = ({ data }: ComponentDetailsProps) => {
+  const { overview, examples, code, props } = data
   return (
-    <div className="relative flex w-full">
-      <div className="flex max-w-prose flex-1 flex-col sm:ml-8">
+    <div className="flex max-w-prose justify-between">
+      <div className="flex max-w-prose flex-1 flex-col overflow-x-scroll sm:ml-8">
         {/* <ComponentOverview id='overview' overview={overview} /> */}
         {/* <ComponentExamples id='examples' examples={examples} /> */}
         {/* <ComponentCode id='code' code={code} /> */}
@@ -60,9 +60,7 @@ const ComponentDetails = ({
 
         <section id="code" className="mb-8">
           <h3>Code</h3>
-          {/* PROPS TO BE ADDED */}
-          {/* <CodePreview value={code} /> */}
-          <CodePreview />
+          <CodePreview filename="Button.tsx" code={code} />
         </section>
 
         <section id="props" className="mb-8">
@@ -94,7 +92,7 @@ const ComponentDetails = ({
           <a href="#overview">Back to top</a>
         </section>
       </div>
-      <aside className="ml-auto hidden pl-8 lg:sticky lg:right-0 lg:top-0 lg:block lg:h-full lg:min-w-fit lg:max-w-fit">
+      <aside className="hidden lg:sticky lg:right-0 lg:top-0 lg:block lg:h-full lg:min-w-fit lg:max-w-fit">
         <nav>
           <ul className="flex flex-col gap-2">
             <li className="sidebar-group-heading">Page Shortcuts</li>

@@ -137,7 +137,8 @@
   }
 
   .code-preview--wrapper {
-    @apply overflow-hidden rounded-md;
+    @apply rounded-md sm:max-w-md md:max-w-xl;
+    overflow-x: hidden;
     border: rgb(var(--code-border-color)) 1.5px solid;
   }
 
@@ -147,12 +148,20 @@
     background-color: rgb(var(--code-background-color));
     color: rgb(var(--code-color--light));
   }
+
+  .cm-scroller {
+    /* @apply max-w-96; */
+    overflow-x: scroll;
+  }
 }
 
 @layer components {
-  @media screen and (max-width: 564px) {
+  @media screen and (max-width: 640px) {
     .container {
       padding: 0 0.5rem;
     }
+    /* .code-preview--wrapper {
+      width: clamp(20rem, 100%, 30rem);
+    } */
   }
 }
