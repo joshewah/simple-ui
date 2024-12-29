@@ -63,7 +63,7 @@ const NavigationLayout = ({
                   <PanelLeftClose size={18} strokeWidth={2.5} />
                 </button>
               </header>
-              <SidebarList type={'Link'} />
+              <SidebarList />
             </div>
           </nav>
         )}
