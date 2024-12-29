@@ -36,6 +36,7 @@ type CodePreviewProps = {
 }
 
 function CodePreview({
+  filename,
   code = "console.log('hello world!')",
 }: CodePreviewProps) {
   const [copied, setCopied] = useState(false)
@@ -51,7 +52,7 @@ function CodePreview({
   return (
     <div className="code-preview--wrapper">
       <header className="code-preview--header">
-        <h6 className="text-xs tracking-wide">filename.tsx</h6>
+        <h6 className="text-xs tracking-wide">{filename}</h6>
         <button onClick={handleCopy}>
           {!copied ? (
             <Copy size={12} strokeWidth={2.5} />

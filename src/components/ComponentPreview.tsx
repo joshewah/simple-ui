@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { capitalize } from '../utils/capitalize'
 
 type ComponentPreviewProps = {
@@ -8,6 +8,10 @@ type ComponentPreviewProps = {
 
 const ComponentPreview = ({ preview, options }: ComponentPreviewProps) => {
   const [component, setComponent] = useState(preview)
+
+  useEffect(() => {
+    setComponent(preview)
+  }, [preview])
 
   const handleChange = (e: React.FormEvent<HTMLSelectElement>) => {
     const selectedStyle = e.currentTarget.value

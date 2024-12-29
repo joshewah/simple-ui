@@ -36,6 +36,15 @@ const SidebarList = ({ type }: SidebarListProps) => {
               Button
             </Link>
           </li>
+          <li>
+            <Link
+              to="/docs/components/card"
+              className="sidebar-link tag-new"
+              reloadDocument
+            >
+              Card
+            </Link>
+          </li>
         </ul>
       </>
     )
@@ -46,7 +55,7 @@ const SidebarList = ({ type }: SidebarListProps) => {
       <ul className="mb-4 flex flex-col">
         <li className="sidebar-group-heading">Getting Started</li>
         <li>
-          <NavLink to="/docs" className="sidebar-link">
+          <NavLink to="/docs" className="sidebar-link" reloadDocument>
             Introduction
           </NavLink>
         </li>
@@ -54,7 +63,11 @@ const SidebarList = ({ type }: SidebarListProps) => {
       <ul>
         <li className="sidebar-group-heading">Components</li>
         <li>
-          <NavLink to="/docs/components/accordion" className="sidebar-link">
+          <NavLink
+            to="/docs/components/accordion"
+            className="sidebar-link"
+            reloadDocument
+          >
             Accordion
           </NavLink>
         </li>
@@ -64,6 +77,15 @@ const SidebarList = ({ type }: SidebarListProps) => {
             className="sidebar-link tag-new"
           >
             Button
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/docs/components/card"
+            className="sidebar-link tag-new"
+            reloadDocument
+          >
+            Card
           </NavLink>
         </li>
       </ul>

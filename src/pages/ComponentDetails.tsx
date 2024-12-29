@@ -1,6 +1,7 @@
 import { ChevronsUp } from 'lucide-react'
 import CodePreview from '../components/CodePreview'
-import ComponentPreview from '../components/ComponentPreview'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import Tab from '../components/Tab/Tab'
 import Button from '../components/Button'
 
@@ -31,7 +32,14 @@ type ComponentDetailsProps = {
 }
 
 const ComponentDetails = ({ data }: ComponentDetailsProps) => {
-  const { overview, examples, code, props } = data
+  // keep the data in state
+  const [componentData, setComponentData] = useState<ComponentDetails>(data)
+  // const { componentId } = useParams()
+
+  useEffect(() => {
+    setComponentData(data)
+  }, [data])
+  // const { overview, examples, code, props } = data
   return (
     <div className="lg:flex lg:w-full lg:justify-between">
       <div className="flex max-w-[calc(100dvw-2rem)] flex-1 flex-col overflow-x-scroll sm:ml-8 sm:max-w-md md:max-w-xl lg:max-w-screen-sm">
@@ -40,15 +48,15 @@ const ComponentDetails = ({ data }: ComponentDetailsProps) => {
         {/* <ComponentCode id='code' code={code} /> */}
         {/* <ComponentPropsTable id='props' props={props} /> */}
         <section id="overview" className="mb-8 max-w-prose">
-          <h2>{overview.title}</h2>
-          <p>{overview.description}</p>
+          <h2>{componentData.overview.title}</h2>
+          <p>{componentData.overview.description}</p>
         </section>
 
         <section id="examples" className="mb-8">
           <h3 className="border-b-[1.5px] border-b-stoke-color pb-1">
             Examples
           </h3>
-          {examples.map((example) => (
+          {componentData.examples.map((example) => (
             <>
               <h4>{example.name}</h4>
               <Tab
@@ -61,7 +69,7 @@ const ComponentDetails = ({ data }: ComponentDetailsProps) => {
 
         <section id="code" className="mb-8">
           <h3>Code</h3>
-          <CodePreview filename="Button.tsx" code={code} />
+          <CodePreview filename="Button.tsx" code={componentData.code} />
         </section>
 
         <section id="props" className="mb-8">
@@ -77,7 +85,7 @@ const ComponentDetails = ({ data }: ComponentDetailsProps) => {
               </tr>
             </thead>
             <tbody className="font-base text-left text-xs text-text-secondary-color">
-              {props.map((prop) => (
+              {componentData.props.map((prop) => (
                 <tr className="h-8 border-b-[1px] border-b-stoke-color last:border-b-0">
                   <td>{prop.name}</td>
                   <td>{prop.type}</td>
